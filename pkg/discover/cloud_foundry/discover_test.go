@@ -123,7 +123,7 @@ var _ = Describe("parseProcessSpecs", func() {
 		It("should return a template with default values if empty", func() {
 			template, _, err := parseProcessSpecs(defaultAppManifest)
 			Expect(err).NotTo(HaveOccurred())
-			Expect(template).To(BeNil()) // Template is nil if empty
+			Expect(template).To(BeNil())
 		})
 
 		It("should set LogRateLimit from AppManifest", func() {
@@ -181,19 +181,6 @@ var _ = Describe("parseProcessSpecs", func() {
 			Expect(processSpec).ToNot(BeNil())
 			Expect(processSpec.ProcessSpecTemplate.LogRateLimit).To(Equal("16K"))
 		})
-
-		// It("should return an error if marshaling fails", func() {
-		// 	// Use a type that cannot be marshaled to JSON
-		// 	struct testStruct {
-		// 		a string
-		// 	}
-		// 	appManifest := AppManifest{
-		// 		Type: "inline",
-		// 		// Add a field that causes marshaling to fail
-		// 	}
-		// 	_, _, err := parseProcessSpecs(appManifest)
-		// 	Expect(err).To(HaveOccurred())
-		// })
 	})
 })
 
